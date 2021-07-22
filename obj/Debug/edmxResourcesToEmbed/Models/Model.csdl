@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GameGenieModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Profile">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNo" Type="Int64" />
+    <NavigationProperty Name="GuessNumber" Relationship="GameGenieModel.FK_GuessNumber_Profile" FromRole="Profile" ToRole="GuessNumber" />
+    <NavigationProperty Name="Pacman" Relationship="GameGenieModel.FK_Pacman_Profile" FromRole="Profile" ToRole="Pacman" />
+    <NavigationProperty Name="MemoryGame" Relationship="GameGenieModel.FK_MemoryGame_Profile" FromRole="Profile" ToRole="MemoryGame" />
+    <NavigationProperty Name="RockPaperSiccor" Relationship="GameGenieModel.FK_RockPaperSiccor_Profile" FromRole="Profile" ToRole="RockPaperSiccor" />
+    <NavigationProperty Name="tetri" Relationship="GameGenieModel.FK_tetris_Profile" FromRole="Profile" ToRole="tetri" />
+  </EntityType>
+  <EntityType Name="Score">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="GameName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Score1" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="GameGenieEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Profiles" EntityType="Self.Profile" />
+    <EntitySet Name="Scores" EntityType="Self.Score" />
+    <EntitySet Name="GuessNumbers" EntityType="GameGenieModel.GuessNumber" />
+    <EntitySet Name="Pacmen" EntityType="GameGenieModel.Pacman" />
+    <AssociationSet Name="FK_GuessNumber_Profile" Association="GameGenieModel.FK_GuessNumber_Profile">
+      <End Role="Profile" EntitySet="Profiles" />
+      <End Role="GuessNumber" EntitySet="GuessNumbers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pacman_Profile" Association="GameGenieModel.FK_Pacman_Profile">
+      <End Role="Profile" EntitySet="Profiles" />
+      <End Role="Pacman" EntitySet="Pacmen" />
+    </AssociationSet>
+    <EntitySet Name="MemoryGames" EntityType="GameGenieModel.MemoryGame" />
+    <EntitySet Name="RockPaperSiccors" EntityType="GameGenieModel.RockPaperSiccor" />
+    <EntitySet Name="tetris" EntityType="GameGenieModel.tetri" />
+    <AssociationSet Name="FK_MemoryGame_Profile" Association="GameGenieModel.FK_MemoryGame_Profile">
+      <End Role="Profile" EntitySet="Profiles" />
+      <End Role="MemoryGame" EntitySet="MemoryGames" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RockPaperSiccor_Profile" Association="GameGenieModel.FK_RockPaperSiccor_Profile">
+      <End Role="Profile" EntitySet="Profiles" />
+      <End Role="RockPaperSiccor" EntitySet="RockPaperSiccors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tetris_Profile" Association="GameGenieModel.FK_tetris_Profile">
+      <End Role="Profile" EntitySet="Profiles" />
+      <End Role="tetri" EntitySet="tetris" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="GuessNumber">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Score" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Profile" Relationship="GameGenieModel.FK_GuessNumber_Profile" FromRole="GuessNumber" ToRole="Profile" />
+  </EntityType>
+  <EntityType Name="Pacman">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Score" Type="Int32" />
+    <NavigationProperty Name="Profile" Relationship="GameGenieModel.FK_Pacman_Profile" FromRole="Pacman" ToRole="Profile" />
+  </EntityType>
+  <Association Name="FK_GuessNumber_Profile">
+    <End Type="GameGenieModel.Profile" Role="Profile" Multiplicity="1" />
+    <End Type="GameGenieModel.GuessNumber" Role="GuessNumber" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="GuessNumber">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pacman_Profile">
+    <End Type="GameGenieModel.Profile" Role="Profile" Multiplicity="1" />
+    <End Type="GameGenieModel.Pacman" Role="Pacman" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Pacman">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="MemoryGame">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Score" Type="Int32" />
+    <NavigationProperty Name="Profile" Relationship="GameGenieModel.FK_MemoryGame_Profile" FromRole="MemoryGame" ToRole="Profile" />
+  </EntityType>
+  <EntityType Name="RockPaperSiccor">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Score" Type="Int32" />
+    <NavigationProperty Name="Profile" Relationship="GameGenieModel.FK_RockPaperSiccor_Profile" FromRole="RockPaperSiccor" ToRole="Profile" />
+  </EntityType>
+  <EntityType Name="tetri">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Score" Type="Int32" />
+    <NavigationProperty Name="Profile" Relationship="GameGenieModel.FK_tetris_Profile" FromRole="tetri" ToRole="Profile" />
+  </EntityType>
+  <Association Name="FK_MemoryGame_Profile">
+    <End Type="GameGenieModel.Profile" Role="Profile" Multiplicity="1" />
+    <End Type="GameGenieModel.MemoryGame" Role="MemoryGame" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="MemoryGame">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RockPaperSiccor_Profile">
+    <End Type="GameGenieModel.Profile" Role="Profile" Multiplicity="1" />
+    <End Type="GameGenieModel.RockPaperSiccor" Role="RockPaperSiccor" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="RockPaperSiccor">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tetris_Profile">
+    <End Type="GameGenieModel.Profile" Role="Profile" Multiplicity="1" />
+    <End Type="GameGenieModel.tetri" Role="tetri" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tetri">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

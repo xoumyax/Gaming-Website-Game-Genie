@@ -1,0 +1,56 @@
+﻿@model GameGenie.Models.Profile
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Register</title>
+    <link rel="stylesheet" href="~/Content/LoginSheet.css" />
+</head>
+<body>
+    <div class="wrapper">
+        <div class="title">
+            Register Page
+        </div>
+        @using (Html.BeginForm("Savedata", "Home", FormMethod.Post))
+        {
+            <div class="field">
+                @Html.EditorFor(model => model.UserId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
+                <label>UserId</label>
+            </div>
+            <div class="field">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                <label>Name</label>
+            </div>
+            <div class="field">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                <label>Email</label>
+            </div>
+            <div class="field">
+                @Html.PasswordFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                <label>Password</label>
+            </div>
+            <div class="field">
+                @Html.EditorFor(model => model.PhoneNo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PhoneNo, "", new { @class = "text-danger" })
+                <label>Phone Number</label>
+            </div>
+
+            <div class="field">
+                <input type="submit" value="Register">
+            </div>
+            <div class="signup-link">
+                Already a Member <a href="#">@Html.ActionLink("Login", "Login")</a>
+            </div>
+        }
+    </div>
+</body>
+</html>

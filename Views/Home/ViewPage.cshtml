@@ -1,0 +1,294 @@
+﻿@model GameGenie.Models.Profile 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--= BOX ICONS =-->
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" rel="stylesheet">
+
+    <!--= CSS =-->
+    <link rel="stylesheet" href="~/Content/style.css">
+
+    <title>Game Genie</title>
+</head>
+<body>
+    @{ 
+        var user = ViewData.Model;
+    }
+    <!--= SCROLL TOP =-->
+    <a href="#" class="scrolltop" id="scroll-top">
+        <i class="bx bx-chevron-up scrolltop__icon"></i>
+    </a>
+
+    <!--= HEADER =-->
+    <header class="l-header" id="header">
+        <nav class="nav bd-container">
+            <a href="#" class="nav__logo">Game Genie</a>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#home" class="nav__link active-link">Home</a></li>
+                    <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+                    <li class="nav__item"><a href="#arcade" class="nav__link">Arcade</a></li>
+                    <li class="nav__item"><a href="#special" class="nav__link">Special</a></li>
+                    <li class="nav__item"><a href="#play" class="nav__link">Playlists</a></li>
+                    <li class="nav__item"> Hey, @user.Name</li>
+                    <li><i class="bx bx-moon change-theme" id="theme-button"></i></li>
+                </ul>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="bx bx-menu"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="l-main">
+        <!--= HOME =-->
+        <section class="home" id="home">
+            <div class="home__container bd-container bd-grid">
+                <div class="home__data">
+                    <h1 class="home__title">Welcome</h1>
+                    <h2 class="home__subtitle">Let's explore<br>Game Genie</h2>
+                    <a href='@Url.Action("Index","Home")' target="_self" class="button">Log off</a> &nbsp;&nbsp;
+                    <a href='#contact' class="button">Contact Us</a>
+                </div>
+
+                <img src="~/Images/img/home.jpg" alt="" class="home__img">
+            </div>
+        </section>
+        <section>
+            <div>
+                <h3 style="text-align:center" class="services__title">Score Board</h3>
+                <table border="1" class="center" align="center">
+                    <thead>
+                        <tr>
+                            <th>User ID</th>
+                            <th>Name</th>
+                            <th>GuessNumber</th>
+                            <th>Pacmen</th>
+                            <th>MemoryGame</th>
+                            <th>Rock Paper Scissor</th>
+                            <th>Tetris</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>@user.UserId</th>
+                            <th>@user.Name</th>
+                            <th>@ViewBag.GuessNumber</th>
+                            <th>@ViewBag.Pacmen</th>
+                            <th>@ViewBag.MemoryGame</th>
+                            <th>@ViewBag.RockPaperSiccor</th>
+                            <th>@ViewBag.Tetris</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <!--= ABOUT =-->
+        <section class="about section bd-container" id="about">
+            <div class="about__container  bd-grid">
+                <div class="about__data">
+                    <span class="section-subtitle about__initial"><b>Meet Game Genie</b></span>
+                    <h2 class="section-title about__initial">All of your favourite games at a single place</h2>
+                    <p class="about__description">Game Genie is a gaming platform that allows us to access a few of our favourite games in one convenient location. This includes games like arcades, puzzles and many more. </p>
+                    <a href="https://loving-borg-f91985.netlify.app/" target="_blank" class="button">About Us</a>
+                </div>
+
+                <img src="~/Images/img/about.jpg" alt="" class="about__img">
+            </div>
+        </section>
+
+        <!--= Our Services =-->
+        <!--= Arcade =-->
+        <section class="services section bd-container" id="arcade">
+            <span class="section-subtitle">Game Zone</span>
+            <h2 class="section-title">Arcade</h2>
+
+            <div class="services__container  bd-grid">
+
+                <div class="services__content">
+                    <a href='@Url.Action("GuessNumber","Home",user)' target="_self">
+                        <img height="150" width="100" src="~/Images/img/number.svg" />
+                        <h3 class="services__title">Test Your Luck</h3>
+                        <p class="services__description">Guess a number between 1 to 20. For each wrong guess a oint will be deducted from an initial state of 20.</p>
+                    </a>
+                </div>
+
+                <div class="services__content">
+                    <a href='@Url.Action("Pacman","Home",user)' target="_self">
+                        <img height="100" width="100" src="~/Images/img/surprise.svg" />
+                        <h3 class="services__title">A Surprise from Genie</h3>
+                        <p class="services__description">Let's get started with our first game. It's a classic arcade and one of the most popular of all time. <i>(keyboard required)</i></p>
+                    </a>
+                </div>
+
+                <div class="services__content">
+                    <a href='@Url.Action("MemoryGame","Home",user)' target="_self">
+                        <img height="150" width="100" src="~/Images/img/memory.svg" />
+                        <h3 class="services__title">A Memory Game for You</h3>
+                        <p class="services__description">Match the cards w.r.t the logos and images. Each wrong attempt deducts 15 marks from an initial score of 500.</p>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!--= Special =-->
+        <section class="services section bd-container" id="special">
+            <h2 class="section-title">Our Favorites</h2>
+
+            <div class="services__container  bd-grid">
+                <div class="services__content">
+                    <a href="https://supermarioplay.com/" target="_blank">
+                        <img height="150" width="100" src="~/Images/img/mario.svg" />
+                        <h3 class="services__title">Super Mario</h3>
+                        <p class="services__description">Of course we can't proceed without mentioning Super Mario; one of the arcade classics. So, here we present a glimpse of 90s Nostalgia.</p>
+                    </a>
+                </div>
+
+                <div class="services__content">
+                    <a href="https://www.kiloo.com/subway-surfers/" target="_blank">
+                        <img height="250" width="200" src="~/Images/img/skate.svg" /><br>
+                        <h3 class="services__title">Subway Surfers</h3>
+                        <p class="services__description">Memories from early days of Android. Subway Surfers is still one of the most attractive games available.</p>
+                    </a>
+                </div>
+
+                <div class="services__content">
+                    <a href="https://www.chess.com/play" target="_blank">
+                        <img height="190" width="100" src="~/Images/img/chess.svg" />
+                        <h3 class="services__title">The Classic Chess</h3>
+                        <p class="services__description">This is a classic board game with huge historical background and significance. Click the section or visit www.chess.com to play Chess.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <!--= More Games =-->
+        <section class="services section bd-container">
+            <h2 class="section-title">Top-up of Games</h2>
+
+            <div class="services__container  bd-grid">
+                <div class="services__content">
+                    <a href='@Url.Action("RockPaperSiccor","Home",user)' target="_self">
+                        <img height="150" width="100" src="~/Images/img/lightbulb.svg" />
+                        <h3 class="services__title">Rock Paper Scissor</h3>
+                        <p class="services__description">Challenge computer with an old school rock paper scissor game.</p>
+                    </a>
+                </div>
+
+                <div class="services__content">
+                    <a href="https://www.miniclip.com/games/8-ball-pool-multiplayer/en/#privacy-settings" target="_blank">
+                        <img height="200" width="150" src="~/Images/img/pool.png" />
+                        <h3 class="services__title">8 Ball Pool</h3>
+                        <p class="services__description">Click to play 8 ball pool on miniclip's official website.</p>
+                    </a>
+                </div>
+
+                <div class="services__content">
+                    <a href='@Url.Action("Tetris","Home",user)' target="_self">
+                        <img height="250" width="200" src="~/Images/img/blocks.svg" /><br>
+                        <h3 class="services__title">Tetris</h3>
+                        <p class="services__description">Presnting you one of the most beloved games of all time.</p>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!--= APP =-->
+        <section class="app section bd-container" id="play">
+            <div class="app__container bd-grid">
+                <div class="app__data">
+                    <span class="section-subtitle app__initial">We have curated playlists for you</span>
+                    <h2 class="section-title app__initial">Genie's Spotify</h2>
+                    <p class="app__description">Listen to all of our favorite music across the globe. Also, there is alsp a special edition playlist included for lo-fi lovers. These playlists are on spotify; share with your friends & family if you love them.</p>
+                    <div class="app__stores">
+                        <a href="https://open.spotify.com/playlist/1k4Cz544HOETbN2YejBeSD" target="_blank"><p class="app__p">World Music</p><img src="~/Images/img/Union (1).svg" alt="playlist1" class="app__store"></a>
+                        <a href="https://open.spotify.com/playlist/6Z6uprRI9AcbB3on3GZK0H" target="_blank"><p class="app__p1">Lofi Tracks</p><img src="~/Images/img/Union (2).svg" alt="playlist2" class="app__store"></a>
+                        <a href="https://open.spotify.com/playlist/4paDJOZH0ArY51RiumxKYc" target="_blank"><p class="app__p1">Instrumental</p><img src="~/Images/img/Union (3).svg" alt="playlist3" class="app__store"></a>
+                    </div>
+                </div>
+
+                <img src="~/Images/img/additional.svg" alt="" class="app__img">
+            </div>
+        </section>
+
+        <!--= CONTACT US =-->
+        <section class="contact section bd-container" id="contact">
+            <div class="contact__container bd-grid">
+                <div class="contact__data">
+                    <span class="section-subtitle contact__initial">Have a Chat</span>
+                    <h2 class="section-title contact__initial">Contact us</h2>
+                    <p class="contact__description">We are always excited to here from you. Please share your views and suggestions with us so that we can keep on improving our Game Genie.</p>
+                </div>
+
+                <div class="contact__button">
+                    <a href="mailto: 911457@cognizant.com" class="button">Mail Genie</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!--= FOOTER =-->
+    <footer class="footer section bd-container">
+        <div class="footer__container bd-grid">
+            <div class="footer__content">
+                <a href="#home" class="footer__logo">Game Genie</a>
+                <span class="footer__description">Awesome browser games<br> in a single webpage.</span>
+                <span class="footer__description">Connect with the Team.</span>
+                <div>
+                    <a href="https://github.com/Mahar1999" class="footer__social" target="_blank"><i class="bx bxl-github"></i></a>
+                    <a href="http://www.soumyajyotidutta.com/" class="footer__social" target="_blank"><i class="bx bxl-edge"></i></a>
+                    <a href="https://www.instagram.com/flickersforart/" class="footer__social" target="_blank"><i class="bx bxl-instagram"></i></a>
+                    <a href="mailto:911457@cognizant.com" class="footer__social" target="_blank"><i class="bx bxs-envelope-open"></i></a>
+                </div>
+            </div>
+
+            <div class="footer__content">
+                <h3 class="footer__title">Original Games</h3>
+                <ul>
+                    <li><a href="#arcade" class="footer__link">Guess My Number</a></li>
+                    <li><a href="#arcade" class="footer__link">Pacman</a></li>
+                    <li><a href="#arcade" class="footer__link">Memory Game with Cards</a></li>
+                    <li><a href="#special" class="footer__link">Rock Paper Scissor</a></li>
+                    <li><a href="#special" class="footer__link">Tetris</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__content">
+                <h3 class="footer__title">Third Party</h3>
+                <ul>
+                    <li><a href="#special" class="footer__link">Super Mario</a></li>
+                    <li><a href="#special" class="footer__link">Subway Surfers</a></li>
+                    <li><a href="#special" class="footer__link">Chess</a></li>
+                    <li><a href="#special" class="footer__link">8 Ball Pool</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__content">
+                <h3 class="footer__title">Developers</h3>
+                <ul>
+                    <li><a href="http://www.soumyajyotidutta.com/" target="_blank" class="footer__link">Soumyajyoti Dutta</a></li>
+                    <li><a href="https://www.linkedin.com/in/saketsingh1999/" target="_blank" class="footer__link">Saket Mahar</a></li>
+                    <li><a href="https://www.linkedin.com/in/sanket-kulkarni-52b82917a" target="_blank" class="footer__link">Sanket Kulkarni</a></li>
+                    <li><a href="https://www.linkedin.com/in/aditya-roy-a627481b1" target="_blank" class="footer__link">Aditya Roy</a></li>
+                    <li><a href="https://www.linkedin.com/in/boopesh-m-a-81716416b" target="_blank" class="footer__link">Boopesh M A</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <p class="footer__copy">&#169; 2021 Game Genie || All rights reserved</p>
+    </footer>
+
+    <!--= SCROLL REVEAL =-->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!--= MAIN JS =-->
+    <script src="~/Scripts/main.js"></script>
+</body>
+</html>
+

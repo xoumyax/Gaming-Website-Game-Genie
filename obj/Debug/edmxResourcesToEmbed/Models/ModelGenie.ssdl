@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="gamegenie_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="GuessNumber">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Score" Type="int" />
+  </EntityType>
+  <EntityType Name="MemoryGame">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Score" Type="int" />
+  </EntityType>
+  <EntityType Name="Pacman">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Score" Type="int" />
+  </EntityType>
+  <EntityType Name="Profile">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PhoneNo" Type="bigint" />
+  </EntityType>
+  <EntityType Name="RockPaperScissor">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Score" Type="int" />
+  </EntityType>
+  <EntityType Name="Tetris">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Score" Type="int" />
+  </EntityType>
+  <EntityContainer Name="gamegenie_dbModelStoreContainer">
+    <EntitySet Name="GuessNumber" EntityType="Self.GuessNumber" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MemoryGame" EntityType="Self.MemoryGame" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pacman" EntityType="Self.Pacman" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Profile" EntityType="Self.Profile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RockPaperScissor" EntityType="Self.RockPaperScissor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tetris" EntityType="Self.Tetris" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,32 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Game Genie</title>
+    <link rel="stylesheet" href="~/content/Index.css" />
+</head>
+<body>
+    <div class="full-page">
+        <div class="navbar">
+            <div>
+                <a href="~/Controllers/HomeController.cs">Game Genie</a>
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li><a href="#">Home</a></li>
+                    <li><button class="loginbbtn">@Html.ActionLink("Login", "Login")</button></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-2 showcase">
+            <img src="~/Images/about.jpg" class="showcasepic" />
+        </div>
+        <div class="col-2" style="margin-left:100px">
+            <h2 class="section-title" style="color:white">All of your favourite games at a single place</h2>
+            <p class="section-right" style="color:white">Game Genie is a gaming platform that allows us to access a few of our favourite games in one convenient location. This includes games like arcades, puzzles and many more.</p>
+        </div>
+    </div>
+</body>
+</html>

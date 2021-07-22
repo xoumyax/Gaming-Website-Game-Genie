@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GameGenieModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="GuessNumber">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Score" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MemoryGame">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Score" Type="int" />
+  </EntityType>
+  <EntityType Name="Pacman">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Score" Type="int" />
+  </EntityType>
+  <EntityType Name="Profile">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="10" />
+    <Property Name="PhoneNo" Type="bigint" />
+  </EntityType>
+  <EntityType Name="RockPaperSiccor">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Score" Type="int" />
+  </EntityType>
+  <EntityType Name="Score">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="GameName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Score" Type="int" />
+  </EntityType>
+  <EntityType Name="tetris">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Score" Type="int" />
+  </EntityType>
+  <Association Name="FK_GuessNumber_Profile">
+    <End Role="Profile" Type="Self.Profile" Multiplicity="1" />
+    <End Role="GuessNumber" Type="Self.GuessNumber" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="GuessNumber">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MemoryGame_Profile">
+    <End Role="Profile" Type="Self.Profile" Multiplicity="1" />
+    <End Role="MemoryGame" Type="Self.MemoryGame" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="MemoryGame">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pacman_Profile">
+    <End Role="Profile" Type="Self.Profile" Multiplicity="1" />
+    <End Role="Pacman" Type="Self.Pacman" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Pacman">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RockPaperSiccor_Profile">
+    <End Role="Profile" Type="Self.Profile" Multiplicity="1" />
+    <End Role="RockPaperSiccor" Type="Self.RockPaperSiccor" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="RockPaperSiccor">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tetris_Profile">
+    <End Role="Profile" Type="Self.Profile" Multiplicity="1" />
+    <End Role="tetris" Type="Self.tetris" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tetris">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GameGenieModelStoreContainer">
+    <EntitySet Name="GuessNumber" EntityType="Self.GuessNumber" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MemoryGame" EntityType="Self.MemoryGame" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pacman" EntityType="Self.Pacman" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Profile" EntityType="Self.Profile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RockPaperSiccor" EntityType="Self.RockPaperSiccor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Score" EntityType="Self.Score" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tetris" EntityType="Self.tetris" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_GuessNumber_Profile" Association="Self.FK_GuessNumber_Profile">
+      <End Role="Profile" EntitySet="Profile" />
+      <End Role="GuessNumber" EntitySet="GuessNumber" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MemoryGame_Profile" Association="Self.FK_MemoryGame_Profile">
+      <End Role="Profile" EntitySet="Profile" />
+      <End Role="MemoryGame" EntitySet="MemoryGame" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pacman_Profile" Association="Self.FK_Pacman_Profile">
+      <End Role="Profile" EntitySet="Profile" />
+      <End Role="Pacman" EntitySet="Pacman" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RockPaperSiccor_Profile" Association="Self.FK_RockPaperSiccor_Profile">
+      <End Role="Profile" EntitySet="Profile" />
+      <End Role="RockPaperSiccor" EntitySet="RockPaperSiccor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tetris_Profile" Association="Self.FK_tetris_Profile">
+      <End Role="Profile" EntitySet="Profile" />
+      <End Role="tetris" EntitySet="tetris" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

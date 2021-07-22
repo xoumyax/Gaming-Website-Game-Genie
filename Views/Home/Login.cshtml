@@ -1,0 +1,49 @@
+﻿@model GameGenie.Models.Profile
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link rel="stylesheet" href="~/Content/LoginSheet.css" />
+</head>
+<body>
+    <div class="wrapper">
+        <div class="title">
+            Login Page
+        </div>
+        @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+        {
+            <div class="field">
+                @Html.EditorFor(model => model.UserId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
+                <label>UserId</label>
+            </div>
+            <div class="field">
+                @Html.PasswordFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                <label>Password</label>
+            </div>
+            <div class="content">
+                <div class="checkbox">
+                    <input type="checkbox" id="remember-me">
+                    <label for="remember-me">Remember me</label>
+                </div>
+                <div class="pass-link">
+                    <a href="#">@Html.ActionLink("Forgot password?", "Forgot")</a>
+                </div>
+            </div>
+            <div class="field">
+                <input type="submit" value="Login">
+            </div>
+            <div class="signup-link">
+                Not a member? <a href="#">@Html.ActionLink("Sign Up Now", "Signup")</a>
+            </div>
+        }
+    </div>
+</body>
+</html>

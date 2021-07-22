@@ -1,0 +1,230 @@
+﻿@model GameGenie.Models.Profile
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Memory Game</title>
+
+    <link rel="stylesheet" href="~/Content/MemoryGame.css">
+</head>
+<body>
+    @{ 
+        var us = ViewData.Model;
+    }
+    <section class="memory-game">
+        <div class="memory-card" data-framework="aurelia">
+            <img class="front-face" src="~/Images/memorygame/superhero.svg" alt="Superhero" />
+            <img class="back-face" src="~/Images/memorygame/badge.svg" alt="cover" />
+        </div>
+        <div class="memory-card" data-framework="aurelia">
+            <img class="front-face" src="~/Images/memorygame/superhero.svg" alt="Superhero" />
+            <img class="back-face" src="~/Images/memorygame/badge.svg" alt="cover" />
+        </div>
+
+        <div class="memory-card" data-framework="vue">
+            <img class="front-face" src="~/Images/memorygame/fly.svg" alt="fly" />
+            <img class="back-face" src="~/Images/memorygame/badge.svg" alt="cover" />
+        </div>
+        <div class="memory-card" data-framework="vue">
+            <img class="front-face" src="~/Images/memorygame/fly.svg" alt="fly" />
+            <img class="back-face" src="~/Images/memorygame/badge.svg" alt="cover" />
+        </div>
+
+        <div class="memory-card" data-framework="angular">
+            <img class="front-face" src="~/Images/memorygame/autumn.svg" alt="autumn" />
+            <img class="back-face" src="~/Images/memorygame/badge.svg" alt="cover" />
+        </div>
+        <div class="memory-card" data-framework="angular">
+            <img class="front-face" src="~/Images/memorygame/autumn.svg" alt="autumn" />
+            <img class="back-face" src="~/Images/memorygame/badge.svg" alt="cover" />
+        </div>
+
+        <div class="memory-card" data-framework="ember">
+            <img class="front-face" src="~/Images/memorygame/data.svg" alt="Ember" />
+            <img class="back-face" src="~/Images/memorygame/badge.svg" alt="cover" />
+        </div>
+        <div class="memory-card" data-framework="ember">
+            <img class="front-face" src="~/Images/memorygame/data.svg" alt="data" />
+            <img class="back-face" src="~/Images/memorygame/badge.svg" alt="cover" />
+        </div>
+
+        <div class="memory-card" data-framework="backbone">
+            <img class="front-face" src="~/Images/memorygame/land.svg" alt="land" />
+            <img class="back-face" src="~/Images/memorygame/badge.svg" alt="cover" />
+        </div>
+        <div class="memory-card" data-framework="backbone">
+            <img class="front-face" src="~/Images/memorygame/land.svg" alt="land" />
+            <img class="back-face" src="~/Images/memorygame/badge.svg" alt="cover" />
+        </div>
+
+        <div class="memory-card" data-framework="react">
+            <img class="front-face" src="~/Images/memorygame/code.svg" alt="code" />
+            <img class="back-face" src="~/Images/memorygame/badge.svg" alt="cover" />
+        </div>
+        <div class="memory-card" data-framework="react">
+            <img class="front-face" src="~/Images/memorygame/code.svg" alt="code" />
+            <img class="back-face" src="~/Images/memorygame/badge.svg" alt="cover" />
+        </div>
+    </section>
+
+    <div>
+        <h3>
+            Score: <span id="text"><span id="score"></span></span><br><br><p>Hey, @us.Name</p>
+            <p class="text"><span id="text">Atom: </span><br><i>Don't press unless all the <br>remaining cards are matched.<br> Initiates score generation process.</i></p><br>
+            <p class="text"><span id="text">Cognizant: </span><br><i>Press <b>after Atom Card.</b></i></p>
+        </h3>
+        <button onclick="submit()">@Html.ActionLink("Quit", "ViewPage", us)</button>
+    </div>
+
+    <section class="memory-game">
+        <div class="memory-card" data-framework="aurelia">
+            <img class="front-face" src="~/Images/memorygame/premierleague.svg" alt="premierleague" />
+            <img class="back-face" src="~/Images/memorygame/badge1.svg" alt="cover" />
+        </div>
+        <div class="memory-card" data-framework="aurelia">
+            <img class="front-face" src="~/Images/memorygame/premierleague.svg" alt="premierleague" />
+            <img class="back-face" src="~/Images/memorygame/badge1.svg" alt="cover" />
+        </div>
+
+        <div class="memory-card" data-framework="vue">
+            <img class="front-face" src="~/Images/memorygame/qatarairways.svg" alt="qatarairways" />
+            <img class="back-face" src="~/Images/memorygame/badge1.svg" alt="cover" />
+        </div>
+        <div class="memory-card" data-framework="vue">
+            <img class="front-face" src="~/Images/memorygame/qatarairways.svg" alt="qatarairways" />
+            <img class="back-face" src="~/Images/memorygame/badge1.svg" alt="cover" />
+        </div>
+
+        <div class="memory-card" data-framework="angular">
+            <img class="front-face" src="~/Images/memorygame/android.svg" alt="android" />
+            <img class="back-face" src="~/Images/memorygame/badge1.svg" alt="cover" />
+        </div>
+        <div class="memory-card" data-framework="angular">
+            <img class="front-face" src="~/Images/memorygame/android.svg" alt="android" />
+            <img class="back-face" src="~/Images/memorygame/badge1.svg" alt="cover" />
+        </div>
+
+        <div class="memory-card" data-framework="ember">
+            <img class="front-face" src="~/Images/memorygame/swift.svg" alt="swift" />
+            <img class="back-face" src="~/Images/memorygame/badge1.svg" alt="cover" />
+        </div>
+        <div class="memory-card" data-framework="ember">
+            <img class="front-face" src="~/Images/memorygame/swift.svg" alt="swift" />
+            <img class="back-face" src="~/Images/memorygame/badge1.svg" alt="cover" />
+        </div>
+
+        <div class="memory-card" data-framework="backbone">
+            <img class="front-face" src="~/Images/memorygame/cplusplus.svg" alt="c++" />
+            <img class="back-face" src="~/Images/memorygame/badge1.svg" alt="cover" />
+        </div>
+        <div class="memory-card" data-framework="backbone">
+            <img class="front-face" src="~/Images/memorygame/cplusplus.svg" alt="c++" />
+            <img class="back-face" src="~/Images/memorygame/badge1.svg" alt="cover" />
+        </div>
+
+        <div class="memory-card" data-framework="react">
+            <img class="front-face" src="~/Images/memorygame/task_done.svg" alt="Complete" />
+            <img class="back-face" src="~/Images/memorygame/cognizant.svg" alt="cover" />
+        </div>
+        <div class="memory-card" data-framework="react">
+            <img class="front-face" src="~/Images/memorygame/loading.svg" alt="loading" />
+            <img class="back-face" src="~/Images/memorygame/atom.svg" alt="cover" />
+        </div>
+    </section>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script>
+        const cards = document.querySelectorAll('.memory-card');
+        const scoreDisplay = document.getElementById('score')
+        let score = 500;
+        let hasFlippedCard = false;
+        let lockBoard = false;
+        let firstCard, secondCard;
+
+        function flipCard() {
+            if (lockBoard) return;
+            if (this === firstCard) return;
+
+            this.classList.add('flip');
+
+            if (!hasFlippedCard) {
+                hasFlippedCard = true;
+                firstCard = this;
+
+                return;
+            }
+
+            secondCard = this;
+            checkForMatch();
+        }
+
+        function checkForMatch() {
+            let isMatch = firstCard.dataset.framework === secondCard.dataset.framework;
+
+            isMatch ? disableCards() : unflipCards();
+            isMatch ? score += 30 : scoreDisplay.innerHTML = score;
+
+            let isDiff = firstCard.dataset.framework !== secondCard.dataset.framework;
+
+            isDiff ? score -= 15 : scoreDisplay.innerHTML = score;
+
+
+        }
+
+
+        function disableCards() {
+            firstCard.removeEventListener('click', flipCard);
+            secondCard.removeEventListener('click', flipCard);
+
+            resetBoard();
+        }
+
+        function unflipCards() {
+            lockBoard = true;
+
+            setTimeout(() => {
+                firstCard.classList.remove('flip');
+                secondCard.classList.remove('flip');
+
+                resetBoard();
+            }, 1500);
+        }
+
+        function resetBoard() {
+            [hasFlippedCard, lockBoard] = [false, false];
+            [firstCard, secondCard] = [null, null];
+        }
+
+        (function shuffle() {
+            cards.forEach(card => {
+                let randomPos = Math.floor(Math.random() * 12);
+                card.style.order = randomPos;
+            });
+        })();
+
+        cards.forEach(card => card.addEventListener('click', flipCard));
+        function submit() {
+                var model = new Object();
+                model.UserId = '@us.UserId';
+                model.Score = score;
+                jQuery.ajax({
+        type: "POST",
+        url: "@Url.Action("Update3")",
+        dataType: "json",
+        contentType: "application/json;charset=utf-8",
+        data: JSON.stringify({ std: model }),
+        success: function (data) {
+            alert(data);
+        },
+        failure: function (errMsg) {
+            alert(errMsg);
+        }
+    });
+            }
+    </script>
+</body>
+</html>
