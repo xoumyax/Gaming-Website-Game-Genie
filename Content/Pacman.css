@@ -1,0 +1,65 @@
+﻿.grid {
+    display: flex;
+    flex-wrap: wrap;
+    width: 560px;
+    height: 560px;
+    padding-left: 500px;
+    padding-top: 50px;
+}
+
+    .grid div {
+        width: 20px;
+        height: 20px;
+    }
+
+.pac-dot {
+    background-color: green;
+    border: 5px solid white;
+    box-sizing: border-box;
+}
+
+.wall {
+    background-color: rgb(184, 0, 70);
+}
+
+.power-pellet {
+    background-color: rgb(61, 183, 187);
+    border-radius: 10px;
+}
+
+.blinky {
+    background-color: rgb(0, 94, 47);
+}
+
+.pinky {
+    background-color: rgb(255, 91, 118);
+}
+
+.inky {
+    background-color: rgb(255, 145, 0);
+}
+
+.clyde {
+    background-color: rgb(65, 11, 15);
+}
+
+.pac-man {
+    border-radius: 10px;
+    background-image: url(../Images/game-solid-24.png);
+    width: 7px;
+}
+
+.scared-ghost {
+    background-color: aquamarine;
+}
+
+body {
+    background-image: url(../Images/background.jpg);
+    background-repeat: no-repeat;
+    max-width: fit-content();
+    max-height: fit-content();
+}
+
+h3 {
+    padding-left: 500px;
+}

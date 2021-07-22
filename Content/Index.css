@@ -1,0 +1,107 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.full-page {
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url(../Images/pexels-soumil-kumar-735911.jpg);
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 20Px;
+    padding-left: 50px;
+    padding-right: 30px;
+    padding-top: 50px;
+}
+
+nav {
+    flex: 1;
+    text-align: right;
+}
+
+    nav ul {
+        display: inline-block;
+        list-style: none;
+    }
+
+        nav ul li {
+            display: inline-block;
+            margin-right: 70px;
+        }
+
+            nav ul li a {
+                text-decoration: none;
+                font-size: 20px;
+                color: white;
+                font-family: sans-serif;
+            }
+
+            nav ul li button {
+                font-size: 20px;
+                color: white;
+                outline: none;
+                border: none;
+                background: transparent;
+                cursor: pointer;
+                font-family: sans-serif;
+            }
+
+                nav ul li button:hover {
+                    color: aqua;
+                }
+
+            nav ul li a:hover {
+                color: aqua;
+            }
+
+a {
+    text-decoration: none;
+    color: palevioletred;
+    font-size: 28px;
+}
+
+.showcase {
+    width: 80%;
+    margin: auto;
+    overflow: auto;
+}
+
+.showcasepic {
+    width: 75%;
+    margin-top: 100px;
+    margin-left: 100px;
+}
+
+.col-2 {
+    float: left;
+    width: 40%;
+}
+
+.section-title {
+    margin: auto;
+    width: 70%;
+    text-align: center;
+    font-weight: 200;
+    line-height: 1.5em;
+    font-size: 28Px;
+    margin-top: 100px;
+    margin-left: 0px;
+}
+
+.section-right {
+    text-align: justify;
+    width: 70%;
+    height: 70%;
+    padding: 10px;
+    font-size: 25px;
+    margin-right: 0px;
+    overflow: hidden;
+}
